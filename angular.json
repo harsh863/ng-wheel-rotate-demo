@@ -6,6 +6,10 @@
     "ng-wheel-rotate-demo": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -27,7 +31,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -94,7 +98,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
