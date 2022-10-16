@@ -51,9 +51,9 @@
         <div class="column">Axis</div>
       </div>
       <div class="table-body">
-        <div class="column">{{wheelRotateEvent?.direction || '-'}}</div>
-        <div class="column">{{wheelRotateEvent?.source || '-'}}</div>
-        <div class="column">{{wheelRotateEvent?.axis || '-'}}</div>
+        <div class="column">{{($wheelRotateEvent | async)?.direction || '-'}}</div>
+        <div class="column">{{($wheelRotateEvent | async)?.source || '-'}}</div>
+        <div class="column">{{($wheelRotateEvent | async)?.axis || '-'}}</div>
       </div>
     </div>
   </div>
