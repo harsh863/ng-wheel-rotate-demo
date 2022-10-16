@@ -1,13 +1,16 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {WheelRotateAxis, WheelRotateEvent} from "ng-wheel-rotate";
 import {FormControl} from "@angular/forms";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
+  $wheelRotateEvent = new BehaviorSubject<WheelRotateEvent>(null!);
 
   wheelRotateControls = {
     debounce: new FormControl(0),
@@ -15,10 +18,9 @@ export class AppComponent {
     disabled: new FormControl(false),
     wheelRotateAxis: new FormControl(WheelRotateAxis.BOTH),
   };
-  wheelRotateEvent!: WheelRotateEvent;
   wheelRotateAxis = WheelRotateAxis;
 
   onWheelRotate(data: WheelRotateEvent) {
-    this.wheelRotateEvent = data;
+    this.$wheelRotateEvent.next(data);
   }
 }
